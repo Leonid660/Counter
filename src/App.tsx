@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import s from './App.module.css';
+import Module1 from "./module1";
+import Module2 from "./module2";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [value, setValue] = useState(0)
+
+    const increment = () => {
+        setValue(value + 1)
+    }
+    const decrement = () => {
+        setValue(value - 1)
+    }
+
+    return (
+        <div className={s.App}>
+
+            <Module2 />
+            <Module1
+                value={value}
+                increment={increment}
+                decrement={decrement}
+            />
+
+        </div>
+    );
 }
 
 export default App;
