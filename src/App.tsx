@@ -4,25 +4,32 @@ import Module1 from "./module1";
 import Module2 from "./module2";
 
 const App = () => {
-    const [value, setValue] = useState(0)
-
+    const [maxValue, setMaxValue] = useState<number>(0)
+    const [minValue, setMinValue] = useState<number>(0)
+    const [saveValue, setSaveValue] = useState("")
     const increment = () => {
-        setValue(value + 1)
+        setMinValue(minValue + 1)
     }
-    const decrement = () => {
-        setValue(value - 1)
+
+
+    if(minValue >= maxValue){
+
     }
 
     return (
         <div className={s.App}>
-
-            <Module2 />
+            <Module2
+                setSaveValue={setSaveValue}
+                setMaxValue={setMaxValue}
+                setMinValue={setMinValue}
+                />
             <Module1
-                value={value}
+                saveValue={saveValue}
+                setMinValue={setMinValue}
+                maxValue={maxValue}
+                minValue={minValue}
                 increment={increment}
-                decrement={decrement}
             />
-
         </div>
     );
 }
